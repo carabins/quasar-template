@@ -1,8 +1,35 @@
 {
-  "extends": "@quasar/app/tsconfig-preset",
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
     "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "app/*": ["*"],
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "pages/*": ["src/pages/*"],
+      "assets/*": ["src/assets/*"],
+      "boot/*": ["src/boot/*"]
+    },
+    // Forces quasar typings to be included, even if they aren't referenced directly
+    // Removing this would break `quasar/wrappers` imports if `quasar`
+    //  isn't referenced anywhere, because those typings are declared
+    //  into `@quasar/app` which is imported by `quasar` typings
+    "types": ["quasar", "DOM"],
+    "lib": ["DOM"],
     "jsx": "preserve"
   },
-
+  // Needed to avoid files copied into 'dist' folder (eg. a `.d.ts` file inside `src-ssr` folder)
+  // to be evaluated by TS when their original files has been updated
+  "exclude": ["/dist", ".quasar", "node_modules"]
 }

@@ -1,23 +1,32 @@
 {
-  "name": "quasar-template",
+  "name": "quasar-templ",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
   "author": "Gleb Y Panteleev <dev@gleb.pw>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
-    "start": "quasar dev"
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.10.4",
-    "core-js": "^3.11.1",
-    "quasar": "2.0.0-beta.12"
+    "@quasar/extras": "^1.0.0",
+    "alak": "^3.0.0-alpha.53",
+    "avuef": "^0.8.21",
+    "babel-plugin-import-dir": "^2.0.0",
+    "core-js": "^3.6.5",
+    "lasens": "^0.2.0-next.73",
+    "quasar": "^2.0.0-beta.1"
   },
   "devDependencies": {
-    "@quasar/app": "3.0.0-beta.18",
-    "@types/node": "^15.0.1",
-    "@vue/babel-plugin-jsx": "^1.0.6"
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@quasar/app": "^3.0.0-beta.1",
+    "@vue/babel-plugin-jsx": "^1.0.6",
+    "babel-plugin-import-directory": "^1.1.0",
+    "babel-plugin-wildcard": "^7.0.0",
+    "crypto": "^1.0.1",
+    "eslint": "^7.14.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
@@ -31,7 +40,7 @@
     "last 5 Opera versions"
   ],
   "engines": {
-    "node": ">= 10.18.1",
+    "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }

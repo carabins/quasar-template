@@ -6,3 +6,6 @@ export interface Todo {
 export interface Meta {
   totalCount: number;
 }
+
+
+import ns from 'lasens'

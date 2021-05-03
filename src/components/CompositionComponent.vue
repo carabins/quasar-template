@@ -1,7 +1,16 @@
 <template>
   <div>
-    <p>Clicks on todos: {{ clickCount }}</p>
-    <Tsx></Tsx>
+    <!-- <p>{{ title }}</p>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id" @click="increment">
+        {{ todo.id }} - {{ todo.content }}
+      </li>
+    </ul>
+    <p>Count: {{ todoCount }} / {{ meta.totalCount }}</p>
+    <p>Active: {{ active ? 'yes' : 'no' }}</p>
+    <p>Clicks on todos: {{ clickCount }}</p> -->
+    <div>{{$la.build.ok()}}</div>
+    <Fx/>
   </div>
 </template>
 
@@ -14,30 +23,28 @@ import {
   toRef,
   Ref,
 } from 'vue';
-import {Todo, Meta} from './models';
-
-import {Tsx} from "./Tsx";
-console.log("{Tsx}", {Tsx})
+import { Fx } from './Fx';
+import { Todo, Meta } from './models';
 
 function useClickCount() {
   const clickCount = ref(0);
-
   function increment() {
     clickCount.value += 1
     return clickCount.value;
   }
 
-  return {clickCount, increment};
+  return { clickCount, increment };
 }
 
 function useDisplayTodo(todos: Ref<Todo[]>) {
   const todoCount = computed(() => todos.value.length);
-  return {todoCount};
+  return { todoCount };
 }
 
+Fx
 export default defineComponent({
   name: 'CompositionComponent',
-  components: {Tsx},
+  components:{Fx},
   props: {
     title: {
       type: String,
@@ -56,7 +63,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    return {...useClickCount(), ...useDisplayTodo(toRef(props, 'todos'))};
+    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) };
   },
 });
 </script>
